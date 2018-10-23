@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "cloud-commander.fullname" . }}
+  labels:
+    app: {{ template "cloud-commander.name" . }}
+    chart: {{ template "cloud-commander.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.container_ports.name }}
+      protocol: TCP
+  selector:
+    app: {{ template "cloud-commander.name" . }}
+    release: {{ .Release.Name }}
