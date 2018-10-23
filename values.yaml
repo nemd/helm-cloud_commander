@@ -18,7 +18,7 @@ container_ports:
   name: ccmd-port
 
 ingress:
-  enabled: true
+  enabled: false
   annotations: {}
   path: /
   hosts:
